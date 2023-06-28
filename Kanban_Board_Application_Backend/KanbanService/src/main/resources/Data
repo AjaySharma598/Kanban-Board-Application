@@ -1,0 +1,503 @@
+
+http://localhost:8082/api/v2/register : Post
+
+RequestBody:
+
+{
+    "emailId": "anisha@gmail.com",
+    "password":"Pass@123",
+     "userName":"anisha",
+     "mobileNo":"8553894689",
+    "projectLists":[],
+  "projectMemberLists":[]
+}
+
+--------------------------------------------------------------------------------------------------------
+http://localhost:8082/api/v2/createProject/anisha@gmail.com
+
+RequestBody:
+
+{
+
+   "projectName":"Project1",
+
+    "taskList":[]
+}
+
+--------------------------------------------------------------------------------
+
+http://localhost:8082/api/v2/projects/anisha@gmail.com: Get All projects
+
+Response:
+[
+    {
+        "projectId": 1,
+        "projectName": "Project1",
+        "taskList": []
+    },
+    {
+        "projectId": 2,
+        "projectName": "Project2",
+        "taskList": []
+    },
+    {
+        "projectId": 3,
+        "projectName": "Project3",
+        "taskList": []
+    },
+    {
+        "projectId": 4,
+        "projectName": "Project4",
+        "taskList": []
+    }
+]
+
+----------------------------------------------------------------------------------
+
+http://localhost:8082/api/v2/deleteProject/anisha@gmail.com/1 : Delete Project
+
+Response:
+
+{
+    "emailId": "anisha@gmail.com",
+    "password": "Pass@123",
+    "userName": "anisha",
+    "mobileNo": "8553894689",
+    "projectLists": [
+        {
+            "projectId": 1,
+            "projectName": "Project1",
+            "taskList": []
+        },
+        {
+            "projectId": 2,
+            "projectName": "Project2",
+            "taskList": []
+        },
+        {
+            "projectId": 3,
+            "projectName": "Project3",
+            "taskList": []
+        }
+    ],
+    "projectMemberLists": []
+}
+
+-----------------------------------------------------------------------------------------------
+
+http://localhost:8082/api/v2/project/anisha@gmail.com/2  : Get Project of Particular ProjectId
+
+
+Response:
+
+{
+    "projectId": 2,
+    "projectName": "Project2",
+    "taskList": []
+}
+
+
+-------------------------------------------------------------------------------------------
+
+http://localhost:8082/api/v2/addProjectMember/anisha@gmail.com :Post
+
+RequestBody:
+
+{
+
+    "memberEmailId":"kivu@gmail.com",
+    "memberName":"kivu",
+    "noOfTask":3
+}
+
+RequestBody:
+{
+    {
+    "emailId": "anisha@gmail.com",
+    "password": "Pass@123",
+    "userName": "anisha",
+    "mobileNo": "8553894689",
+    "projectLists": [
+        {
+            "projectId": 1,
+            "projectName": "Project1",
+            "taskList": []
+        },
+        {
+            "projectId": 2,
+            "projectName": "Project2",
+            "taskList": []
+        },
+        {
+            "projectId": 3,
+            "projectName": "Project3",
+            "taskList": []
+        }
+    ],
+    "projectMemberLists": [
+        {
+            "memberId": 1,
+            "memberEmailId": "kivu@gmail.com",
+            "memberName": "kivu",
+            "noOfTask": 3
+        },
+        {
+            "memberId": 2,
+            "memberEmailId": "guddu@gmail.com",
+            "memberName": "guddu",
+            "noOfTask": 4
+        },
+        {
+            "memberId": 3,
+            "memberEmailId": "ajay@gmail.com",
+            "memberName": "ajay",
+            "noOfTask": 0
+        },
+        {
+            "memberId": 4,
+            "memberEmailId": "ketki@gmail.com",
+            "memberName": "ketki",
+            "noOfTask": 0
+        }
+    ]
+}
+
+----------------------------------------------------------------------------------------------
+http://localhost:8082/api/v2/projectMembers/anisha@gmail.com: Get members details
+
+RequestBody:
+
+[
+    {
+        "memberId": 1,
+        "memberEmailId": "kivu@gmail.com",
+        "memberName": "kivu",
+        "noOfTask": 3
+    },
+    {
+        "memberId": 2,
+        "memberEmailId": "guddu@gmail.com",
+        "memberName": "guddu",
+        "noOfTask": 4
+    },
+    {
+        "memberId": 3,
+        "memberEmailId": "ajay@gmail.com",
+        "memberName": "ajay",
+        "noOfTask": 0
+    },
+    {
+        "memberId": 4,
+        "memberEmailId": "ketki@gmail.com",
+        "memberName": "ketki",
+        "noOfTask": 0
+    }
+]
+--------------------------------------------------------------------------------------------------------
+http://localhost:8082/api/v2/deleteProjectMember/anisha@gmail.com/2 : Delete
+
+
+{
+    "emailId": "anisha@gmail.com",
+    "password": "Pass@123",
+    "userName": "anisha",
+    "mobileNo": "8553894689",
+    "projectLists": [
+        {
+            "projectId": 1,
+            "projectName": "Project1",
+            "taskList": []
+        },
+        {
+            "projectId": 2,
+            "projectName": "Project2",
+            "taskList": []
+        },
+        {
+            "projectId": 3,
+            "projectName": "Project3",
+            "taskList": []
+        }
+    ],
+    "projectMemberLists": [
+        {
+            "memberId": 1,
+            "memberEmailId": "kivu@gmail.com",
+            "memberName": "kivu",
+            "noOfTask": 3
+        },
+        {
+            "memberId": 3,
+            "memberEmailId": "ajay@gmail.com",
+            "memberName": "ajay",
+            "noOfTask": 0
+        },
+        {
+            "memberId": 4,
+            "memberEmailId": "ketki@gmail.com",
+            "memberName": "ketki",
+            "noOfTask": 0
+        }
+    ]
+}
+
+--------------------------------------------------------------------------------
+
+http://localhost:8082/api/v2/createTask/anisha@gmail.com/Project1 :Post
+
+RequestBody:
+
+{
+        "taskId": 1,
+        "taskName": "task1",
+        "taskDescription": "webpage",
+        "priority": "low",
+        "taskStatus": "In progress",
+        "taskDate": "12.03.2023",
+        "memberName": "ajay"
+    }
+
+Response:
+
+{
+        "taskId": 1,
+        "taskName": "task1",
+        "taskDescription": "webpage",
+        "priority": "low",
+        "taskStatus": "In progress",
+        "taskDate": "12.03.2023",
+        "memberName": "ajay"
+    }
+
+-------------------------------------------------------------------------------------------
+
+http://localhost:8082/api/v2/getTasks/anisha@gmail.com/Project1  : GET All tasks
+
+[
+    {
+        "taskId": 1,
+        "taskName": "task1",
+        "taskDescription": "webpage",
+        "priority": "low",
+        "taskStatus": "In progress",
+        "taskDate": "12.03.2023",
+        "memberName": "ajay"
+    },
+    {
+        "taskId": 2,
+        "taskName": "task2",
+        "taskDescription": "task2",
+        "priority": "low",
+        "taskStatus": "done",
+        "taskDate": "12.03.2023",
+        "memberName": "ketki"
+    },
+    {
+        "taskId": 3,
+        "taskName": "task3",
+        "taskDescription": "task3",
+        "priority": "low",
+        "taskStatus": "todo",
+        "taskDate": "15.03.2023",
+        "memberName": "kivu"
+    },
+    {
+        "taskId": 4,
+        "taskName": "task4",
+        "taskDescription": "task4",
+        "priority": "low",
+        "taskStatus": "inProgress",
+        "taskDate": "15.03.2023",
+        "memberName": "gudddu"
+    }
+]
+
+------------------------------------------------------------------------------------------------
+http://localhost:8082/api/v2/getTaskById/anisha@gmail.com/Project1/1
+
+responseBody:
+
+{
+    "taskId": 1,
+    "taskName": "task1",
+    "taskDescription": "webpage",
+    "priority": "low",
+    "taskStatus": "In progress",
+    "taskDate": "12.03.2023",
+    "memberName": "ajay"
+}
+-----------------------------------------------------------------------------------
+http://localhost:8082/api/v2/updateTask/anisha@gmail.com/Project1/2 :Put
+
+RequestBody:
+ {
+
+        "taskName": "task2",
+        "taskDescription": "task2 updation",
+        "priority": "low",
+        "taskStatus": "InProgress",
+        "taskDate": "15.03.2023",
+        "memberName": "ketki"
+    }
+
+Response:
+
+{
+    "emailId": "anisha@gmail.com",
+    "password": "Pass@123",
+    "userName": "anisha",
+    "mobileNo": "8553894689",
+    "projectLists": [
+        {
+            "projectId": 1,
+            "projectName": "Project1",
+            "taskList": [
+                {
+                    "taskId": 1,
+                    "taskName": "task1",
+                    "taskDescription": "webpage",
+                    "priority": "low",
+                    "taskStatus": "In progress",
+                    "taskDate": "12.03.2023",
+                    "memberName": "ajay"
+                },
+                {
+                    "taskId": 2,
+                    "taskName": "task2",
+                    "taskDescription": "task2 updation",
+                    "priority": "low",
+                    "taskStatus": "InProgress",
+                    "taskDate": "15.03.2023",
+                    "memberName": "ketki"
+                },
+                {
+                    "taskId": 3,
+                    "taskName": "task3",
+                    "taskDescription": "task3",
+                    "priority": "low",
+                    "taskStatus": "todo",
+                    "taskDate": "15.03.2023",
+                    "memberName": "kivu"
+                },
+                {
+                    "taskId": 4,
+                    "taskName": "task4",
+                    "taskDescription": "task4",
+                    "priority": "low",
+                    "taskStatus": "inProgress",
+                    "taskDate": "15.03.2023",
+                    "memberName": "gudddu"
+                }
+            ]
+        },
+        {
+            "projectId": 2,
+            "projectName": "Project2",
+            "taskList": []
+        },
+        {
+            "projectId": 3,
+            "projectName": "Project3",
+            "taskList": []
+        }
+    ],
+    "projectMemberLists": [
+        {
+            "memberId": 1,
+            "memberEmailId": "kivu@gmail.com",
+            "memberName": "kivu",
+            "noOfTask": 3
+        },
+        {
+            "memberId": 3,
+            "memberEmailId": "ajay@gmail.com",
+            "memberName": "ajay",
+            "noOfTask": 0
+        },
+        {
+            "memberId": 4,
+            "memberEmailId": "ketki@gmail.com",
+            "memberName": "ketki",
+            "noOfTask": 0
+        }
+    ]
+}
+
+--------------------------------------------------------------------------------------------------
+
+http://localhost:8082/api/v2/deleteTask/anisha@gmail.com/Project1/4  : delete
+
+
+responseBody
+
+{
+    "emailId": "anisha@gmail.com",
+    "password": "Pass@123",
+    "userName": "anisha",
+    "mobileNo": "8553894689",
+    "projectLists": [
+        {
+            "projectId": 1,
+            "projectName": "Project1",
+            "taskList": [
+                {
+                    "taskId": 1,
+                    "taskName": "task1",
+                    "taskDescription": "webpage",
+                    "priority": "low",
+                    "taskStatus": "In progress",
+                    "taskDate": "12.03.2023",
+                    "memberName": "ajay"
+                },
+                {
+                    "taskId": 2,
+                    "taskName": "task2",
+                    "taskDescription": "task2 updation",
+                    "priority": "low",
+                    "taskStatus": "InProgress",
+                    "taskDate": "15.03.2023",
+                    "memberName": "ketki"
+                },
+                {
+                    "taskId": 3,
+                    "taskName": "task3",
+                    "taskDescription": "task3",
+                    "priority": "low",
+                    "taskStatus": "todo",
+                    "taskDate": "15.03.2023",
+                    "memberName": "kivu"
+                }
+            ]
+        },
+        {
+            "projectId": 2,
+            "projectName": "Project2",
+            "taskList": []
+        },
+        {
+            "projectId": 3,
+            "projectName": "Project3",
+            "taskList": []
+        }
+    ],
+    "projectMemberLists": [
+        {
+            "memberId": 1,
+            "memberEmailId": "kivu@gmail.com",
+            "memberName": "kivu",
+            "noOfTask": 3
+        },
+        {
+            "memberId": 3,
+            "memberEmailId": "ajay@gmail.com",
+            "memberName": "ajay",
+            "noOfTask": 0
+        },
+        {
+            "memberId": 4,
+            "memberEmailId": "ketki@gmail.com",
+            "memberName": "ketki",
+            "noOfTask": 0
+        }
+    ]
+}
