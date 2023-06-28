@@ -1,0 +1,80 @@
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    /* background: #84fab0; */
+    /* background: blueviolet; */
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5)); */
+    /* background: linear-gradient(to right, rgba(205, 132, 250, 0.5),rgba(205, 132, 250, 0.5)); */
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5)); */
+    /* background: linear-gradient(to right, rgba(135, 229, 212, 0.5), rgba(0,184,153,0.5)); */
+    /* background: linear-gradient(to right, #87e5d4, #00b899); */
+    /* background: linear-gradient(to right, rgba(205, 132, 250, 0.5),rgba(156, 46, 224, 0.5)); */
+    /* background: linear-gradient(to right, rgba(152, 132, 250, 0.5),rgba(97, 77, 196, 0.5)); */
+    background: linear-gradient(to right, rgba(169, 137, 190, 0.7), rgba(95, 62, 130, 0.7));
+
+
+}
+.gradient-custom-4 {
+
+    /* fallback for old browsers */
+    /* background: #84fab0; */
+    /* background-color: blueviolet; */
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1)); */
+    /* background: linear-gradient(to right, rgba(205, 132, 250, 0.5),rgba(156, 46, 224, 0.5)); */
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1)) */
+    /* background: linear-gradient(to right, rgba(205, 132, 250, 0.5),rgba(66, 1, 107, 0.5)); */
+    background: linear-gradient(to right, rgba(152, 132, 250),rgba(97, 77, 196));
+}
+
+.form-outline{
+    margin-bottom: -0.1rem!important;
+    
+}
+.form-check{
+    margin-bottom: 2rem!important
+}
+.login{
+    margin-top: 10px!important;
+}
+.title{
+    margin-bottom: 15px!important;
+}
+h2{
+    color: indigo;
+    text-align: center;
+}
+#name{
+    width: 100%;
+}
+#email{
+    width: 100%;
+}
+#password{
+    width: 100%;
+}
+#loginbtn{
+    text-align: center;
+}
+
+.modal{
+    margin-top: 8%;
+}
+.modal-header{
+    padding: 0%;
+}
+
+.modal-title{
+    margin: 0;
+    margin-left: 2%;
+    color: black;
+}
+.okbtn{
+    margin-left: 30%;
+}

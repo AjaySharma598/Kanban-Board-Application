@@ -1,0 +1,334 @@
+<body id="bg-container">
+  <div><h1 style="margin: 2%; text-align: center; color: white">{{projectName}}</h1></div>
+  <div class="kanban" >
+    <div class="column">
+      <div class="example-container"  >
+        <div class="column-header">
+          <h2>To do</h2> <p>{{size}}</p>
+          <a class="addbutton"  data-bs-toggle="modal" data-bs-target="#exampleModal" >
+            <mat-icon style="overflow: visible; color: black;">add</mat-icon>
+          </a>
+        </div>
+        <div  class="To Do" *ngFor="let item of task"  >
+            <mat-card class="card"  *ngIf="item.taskStatus=='To Do'">
+              <mat-card-header id="header">
+                <mat-card-title>
+                  {{item.taskName}}  
+                </mat-card-title>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="more-icon">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" >
+                  <button mat-menu-item (click)="updateTaskId(item.taskId)" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                    <mat-icon color="primary" style="overflow: visible;">edit</mat-icon>
+                    <span>Edit</span>
+                  </button>
+                  <button mat-menu-item (click)="deleteTask(item.taskId)">
+                    <mat-icon color="warn" style="overflow: visible;">delete</mat-icon>
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </mat-card-header>
+              <mat-card-content class="card-content"> 
+                <div>
+                  {{item.taskDescription}} 
+                  <mat-chip class="priority" *ngIf="item?.priority === 'High'" style="background-color: rgb(252, 90, 62);">{{item.priority}}</mat-chip>
+                  <mat-chip class="priority" *ngIf="item?.priority === 'Medium'" style="background-color: rgb(89, 194, 89);">{{item.priority}}</mat-chip>
+                  <mat-chip class="priority" *ngIf="item?.priority === 'Low'" style="background-color: rgb(108, 82, 255)">{{item.priority}}</mat-chip>
+                </div>
+              </mat-card-content>
+              <mat-card-footer style="background-color: #F0F0F0;">
+                <mat-card-actions style="padding: 0; margin-left: 2%;">
+                  <div class="date">{{item.taskDate | date: 'dd-MMM-yy'}}</div>
+                  <div>
+                    <div class="avatar"> {{getInitials(item.memberName)}}</div>
+                  </div>
+                  <div style="padding-left: 4%;">{{item.memberName}}</div>
+                </mat-card-actions>
+              </mat-card-footer>
+            </mat-card>
+      </div>
+    </div>
+  </div>
+    
+    <div class="column">
+      <div class="example-container" >
+        <div class="column-header" >
+          <h2>In Progress</h2>
+        </div>
+        <div  class="taskInProgress" *ngFor="let item of task">
+            <mat-card class="card "  *ngIf="item.taskStatus=='In Progress'">
+              <mat-card-header id="header">
+                <mat-card-title>
+                  {{item.taskName}}  
+                </mat-card-title>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="more-icon">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" >
+                  <button mat-menu-item (click)="updateTaskId(item.taskId)" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                    <mat-icon color="primary" style="overflow: visible;">edit</mat-icon>
+                    <span>Edit</span>
+                  </button>
+                  <button mat-menu-item (click)="deleteTask(item.taskId)">
+                    <mat-icon color="warn" style="overflow: visible;">delete</mat-icon>
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </mat-card-header>
+              <mat-card-content class="card-content"> 
+                <div>
+                  {{item.taskDescription}} 
+                  <mat-chip class="priority" *ngIf="item?.priority === 'High'" style="background-color: rgb(252, 90, 62);">{{item.priority}}</mat-chip>
+                  <mat-chip class="priority" *ngIf="item?.priority === 'Medium'" style="background-color: rgb(89, 194, 89);">{{item.priority}}</mat-chip>
+                  <mat-chip class="priority" *ngIf="item?.priority === 'Low'" style="background-color: rgb(108, 82, 255)">{{item.priority}}</mat-chip>
+                </div>
+              </mat-card-content>
+              <mat-card-footer style="background-color: #F0F0F0;">
+                <mat-card-actions style="padding: 0; margin-left: 2%;">
+                  <div class="date">{{item.taskDate | date: 'dd-MMM-yy'}}</div>
+                  <div>
+                    <div class="avatar" style="background-color: randomColor()"> {{getInitials(item.memberName)}}</div>
+                  </div>
+                  <div style="padding-left: 4%;">{{item.memberName}}</div>
+                </mat-card-actions>
+              </mat-card-footer>
+            </mat-card>
+        </div>
+      </div>
+    </div>
+    
+    <div class="column">
+      <div class="example-container">
+        <div class="column-header" >
+          <h2>Completed</h2>
+        </div>
+          <div class="Completed" *ngFor="let item of task">
+            <mat-card class="card " *ngIf="item.taskStatus=='Completed'">
+              <mat-card-header id="header">
+                <mat-card-title>
+                  {{item.taskName}}  
+                  <span><mat-icon style="color: green; float: right; margin: 3px 0 0 10px;">
+                    check_circle
+                  </mat-icon ></span>
+                </mat-card-title>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="more-icon">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" >
+                  <button mat-menu-item (click)="deleteTask(item.taskId)">
+                    <mat-icon color="warn" style="overflow: visible;">delete</mat-icon>
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </mat-card-header>
+              <mat-card-content class="card-content"> 
+                <div>
+                  {{item.taskDescription}} 
+                  <mat-chip class="priority" *ngIf="item?.priority === 'High'" style="background-color: rgb(252, 90, 62);">{{item.priority}}</mat-chip>
+                  <mat-chip class="priority" *ngIf="item?.priority === 'Medium'" style="background-color: rgb(89, 194, 89);">{{item.priority}}</mat-chip>
+                  <mat-chip class="priority" *ngIf="item?.priority === 'Low'" style="background-color: rgb(108, 82, 255)">{{item.priority}}</mat-chip>
+                </div>
+              </mat-card-content>
+              <mat-card-footer style="background-color: #F0F0F0;">
+                <mat-card-actions style="padding: 0; margin-left: 2%;">
+                  <div class="date">{{item.taskDate | date: 'dd-MMM-yy'}}</div>
+                  <div>
+                    <div class="avatar"> {{getInitials(item.memberName)}}</div>
+                  </div>
+                  <div style="padding-left: 4%;">{{item.memberName}}</div>
+                </mat-card-actions>
+              </mat-card-footer>
+            </mat-card>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Add New Task</h2>
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="taskForm" (ngSubmit)="newTask()">
+            <div style=" display: flex;">
+              <div style="margin-right: 4%;">
+                <mat-form-field appearance="outline">
+                  <mat-label>Task Name</mat-label>
+                  <input matInput formControlName="taskName" type="text">
+                  <mat-error *ngIf="taskName?.errors?.['required']">
+                    Task name is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Task Description </mat-label>
+                    <input matInput formControlName="taskDescription" type="text">
+                    <mat-error *ngIf="taskDescription?.errors?.['required']">
+                    Task Description is required.
+                    </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+           
+            <div>
+              <label><strong>Priority: </strong></label>
+              <mat-radio-group name="priority" formControlName="priority">
+                <mat-radio-button value="Low">Low</mat-radio-button>
+                <mat-radio-button value="Medium">Medium</mat-radio-button>
+                <mat-radio-button value="High">High</mat-radio-button>
+              </mat-radio-group>
+              <!-- <mat-error *ngIf="priority?.errors?.['required']">
+                Priority is required.
+              </mat-error> -->
+            </div>
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Task Date</mat-label>
+                <input matInput [matDatepicker]="picker1" [min]="currentDate" formControlName="taskDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix  [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="taskDate?.errors?.['required']">
+                  Task Date is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div style=" display: flex;">
+              <div style="margin-right: 4%;">
+                <mat-form-field appearance="outline" style="color: black;">
+                  <mat-label>Task Status</mat-label>
+                  <mat-select formControlName="taskStatus" >
+                    <mat-option value="To Do">To Do</mat-option>
+                    <mat-option value="In Progress" disabled>In Progress</mat-option>
+                    <mat-option value="Completed" disabled>Completed</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="taskStatus?.errors?.['required']">
+                    Task Status is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Assignee</mat-label>
+                  <mat-select  formControlName="memberName">
+                    <mat-option value="{{member.memberName}}" *ngFor="let member of memberData" >{{member.memberName}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="memberName?.errors?.['required']">
+                    Assignee is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+          </div>
+            
+            
+            <div>
+              <button mat-raised-button color="primary" type="submit" style="margin-left: 36%;" data-bs-dismiss="modal"   [disabled]="taskForm.invalid">
+                Add Task
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Update Task</h2>
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="updateTask()" [formGroup]="updateForm"  >
+            <div style=" display: flex;">
+              <div style="margin-right: 4%;">
+                <mat-form-field appearance="outline">
+                  <mat-label>Task Name</mat-label>
+                  <input matInput formControlName="taskName" type="text">
+                  <!-- <mat-error *ngIf="taskName?.errors?.['required']">
+                    Task name is required.
+                  </mat-error> -->
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Task Description </mat-label>
+                    <input matInput formControlName="taskDescription" type="text">
+                    <!-- <mat-error *ngIf="taskDescription?.errors?.['required']">
+                    Task Description is required.
+                  </mat-error> -->
+                </mat-form-field>
+              </div>
+            </div>
+           
+            <div>
+            <label><strong>Priority: </strong></label>
+              <mat-radio-group name="priority" formControlName="priority">
+                <mat-radio-button value="Low">Low</mat-radio-button>
+                <mat-radio-button value="Medium">Medium</mat-radio-button>
+                <mat-radio-button value="High">High</mat-radio-button>
+              </mat-radio-group>
+              <!-- <mat-error *ngIf="priority?.errors?.['required']">
+                Task Description is required.
+              </mat-error> -->
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Task Date</mat-label>
+              <input matInput [matDatepicker]="picker" [min]="currentDate" formControlName="taskDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <!-- <mat-error *ngIf="taskDate?.errors?.['required']">
+              Task Description is required.
+            </mat-error> -->
+          </div>
+          <div style=" display: flex;">
+            <div style="margin-right: 4%;">
+              <mat-form-field appearance="outline" style="color: black;">
+                <mat-label>Task Status</mat-label>
+                <mat-select formControlName="taskStatus" >
+                  <mat-option value="To Do">To Do</mat-option>
+                  <mat-option value="In Progress">In Progress</mat-option>
+                  <mat-option value="Completed">Completed</mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="taskStatus?.errors?.['required']">
+                  Task Description is required.
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Assignee</mat-label>
+                <mat-select  formControlName="memberName">
+                  <mat-option value="{{member.memberName}}" *ngFor="let member of memberData" >{{member.memberName}}</mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="memberName?.errors?.['required']">
+                  Task Description is required.
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+          
+          <div>
+            <button mat-raised-button color="primary" type="submit" style="margin-left: 36%;" data-bs-dismiss="modal" >
+              Update Task
+            </button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

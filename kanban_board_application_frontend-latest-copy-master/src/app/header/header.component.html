@@ -1,0 +1,69 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport 
+          [attr.role]="'navigation'" [mode]="'side'" [opened]="false"> 
+      <mat-toolbar id="menu">Menu</mat-toolbar>
+      <mat-nav-list id="list">
+        <a mat-list-item href="/" style="display: flex;">
+          <mat-icon class="icon">home</mat-icon>Home
+        </a>
+        <a mat-list-item href="#" routerLink="/notification">
+          <mat-icon class="icon">notifications</mat-icon>Notifications
+        </a>
+        <a mat-list-item href="#" routerLink="/add-project">
+          <mat-icon class="icon">add</mat-icon>New Project
+        </a>
+        <a mat-list-item href="#" routerLink="/add-member">
+          <mat-icon class="icon">person_add</mat-icon>New Member
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>  
+      <mat-toolbar id="mat-toolbar">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon class="icon"aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <div id="header">
+            <div id="title-block">
+              <a id="home-link" routerLink="home">
+                <h1>Kanban</h1>
+              </a>
+            </div>
+            <div>
+              <!-- Navigation Bar -->
+              <a routerLink="/home">Home</a> &nbsp;&nbsp;&nbsp;&nbsp;
+              <a routerLink="/add-project">Project</a> &nbsp;&nbsp;&nbsp;&nbsp;
+              <a *ngIf="showLogin" routerLink="/login">Log In</a>
+            </div>
+            <div id="navbar">
+              <a>
+                <button mat-icon-button *ngIf="!showLogin" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Profile">
+                  <mat-icon class="icon" >account_circle</mat-icon> 
+                </button>
+                <mat-menu #menu="matMenu" >
+                  <div >
+                    <h2 style="padding: 1%;">{{username}}<h4>{{emailId}}</h4></h2>
+                  </div>
+                  <mat-divider></mat-divider>
+                  <button mat-menu-item routerLink="/add-project">Projects</button>
+                  <mat-divider></mat-divider>
+                  <button mat-menu-item routerLink="/notification">Notifications</button>
+                </mat-menu>
+              </a>
+              <p *ngIf="!showLogin" class="username"> HI, {{username | uppercase}} &nbsp; &nbsp;</p>
+              <a *ngIf="!showLogin" routerLink="/" >
+                <button mat-icon-button matTooltip="logout" (click)="logOut()">
+                  <mat-icon class="icon">logout</mat-icon>
+                </button>
+              </a>
+            </div>
+        </div>
+      </mat-toolbar>
+      <!-- Add Content Here -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

@@ -1,0 +1,142 @@
+<section class="vh-100 bg-image" style="
+    background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
+  ">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <!-- this is card -->
+                <div *ngIf="!showLogin" class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px">
+                        <div class="card-body p-5">
+                            <h2 class="title text-uppercase text-center mb-5">
+                                Create an account
+                            </h2>
+
+                            <form [formGroup]="registerForm" (ngSubmit)="register()" >
+                                <div>
+                                    <mat-form-field id="name" appearance="fill">
+                                        <mat-label>User Name</mat-label>
+                                        <input matInput formControlName="userName" type="text">
+                                        <mat-error *ngIf="userName?.errors?.['required']">
+                                            User name is required.
+                                        </mat-error>  
+                                        <mat-error *ngIf="userName?.errors?.['minlength']">
+                                            User name must have atleast 3 letters.
+                                        </mat-error> 
+                                        <mat-error *ngIf="userName?.errors?.['pattern']">
+                                            Please enter a valid username.
+                                        </mat-error>  
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+                                    <mat-form-field id="email" appearance="fill">
+                                        <mat-label>Email Id</mat-label>
+                                        <input matInput formControlName="emailId" type="email">
+                                        <mat-error *ngIf="emailId?.errors?.['required']">
+                                            Email Id is required.
+                                        </mat-error> 
+                                        <mat-error *ngIf="emailId?.errors?.['pattern']">
+                                            Please enter a valid email Id format: name@example.com
+                                        </mat-error>  
+                                    </mat-form-field>   
+                                </div>
+
+                                <div>
+                                    <mat-form-field id="password">
+                                        <mat-label>Password</mat-label>
+                                        <input matInput formControlName="password" type="password">
+                                        <mat-error *ngIf="password?.errors?.['required']">
+                                            Password is required.
+                                        </mat-error>
+                                        <mat-error *ngIf="password?.errors?.['pattern']">
+                                            Password should have a minimum of 8 characters, with at least one symbol, one upper and lower case letters and one number.
+                                            and a number.
+                                        </mat-error> 
+                                    </mat-form-field> 
+                                </div>
+
+                                <div>
+                                    <mat-form-field id="password">
+                                        <mat-label>ConfirmPassword</mat-label>
+                                        <input matInput formControlName="confirmPassword" type="password">
+                                        <mat-error *ngIf="confirmPassword?.errors?.['required']">
+                                            Re-enter the password.
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-error *ngIf="registerForm.errors?.['passwordShouldMatch']===false">
+                                        Passwords do not match
+                                    </mat-error> 
+                                </div>
+                                <div id="loginbtn">
+                                    <button mat-button mat-raised-button color="primary" [disabled]="registerForm.invalid" id="submit" type="submit">Register</button>
+                                </div>
+
+                                <p class="login text-center text-muted mt-5 mb-0">
+                                    Have an account already? &nbsp;
+                                    <a class="fw-bold text-body" style="cursor: pointer;" (click)="openLogin()"><u>Login here</u></a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- login -->
+                <div *ngIf="showLogin" class="col-12 col-md-9 col-lg-7 col-xl-6" style="margin-top: -60px">
+                    <div class="card" style="border-radius: 15px">
+                        <div class="card-body p-5">
+                            <h2 color="primary" class="title text-uppercase text-center mb-5">Login</h2>
+
+                            <form [formGroup]="loginForm" (ngSubmit)="login()"> 
+                                <div>
+                                    <div>
+                                        <mat-form-field id="email" appearance="fill">
+                                            <mat-label>Email Id</mat-label>
+                                            <input matInput formControlName="emailId" type="email">
+                                            <mat-error *ngIf="emailId?.errors?.['required']">
+                                                Email Id is required.
+                                            </mat-error>   
+                                        </mat-form-field> 
+                                    </div>
+                                    <div>
+                                        <mat-form-field id="password">
+                                            <mat-label>Password</mat-label>
+                                            <input matInput formControlName="password" type="password">
+                                            <mat-error *ngIf="password?.errors?.['required']">
+                                                Password is required.
+                                            </mat-error>  
+                                        </mat-form-field> 
+                                    </div>     
+                                    <div id="loginbtn">
+                                        <button mat-button mat-raised-button color="primary" [disabled]="loginForm.invalid" id="submit" type="submit">Log In</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <p class="login text-center text-muted mt-5 mb-0">
+                                Don't have an account? &nbsp;
+                                <a class="fw-bold text-body" style="cursor: pointer;" (click)="showRegister()">
+                                    <u>Register here</u>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<!-- <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+            <h2 class="modal-title" id="exampleModalLabel">Logged in successfully</h2>
+            <div>
+                <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" data-bs-dismiss="modal" class="okbtn">ok</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

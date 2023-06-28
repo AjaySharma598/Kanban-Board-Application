@@ -1,0 +1,15 @@
+<div id="container">
+    <h1 style="padding: 2%;">Notifications</h1>
+    <div *ngFor="let data of projectList">
+        <div *ngFor="let data1 of data.taskList">
+            <mat-card>
+                <mat-card-content>
+                    Project Name:{{data.projectName}} &nbsp;&nbsp;&nbsp;
+                    Task Name:{{data1.taskName}}&nbsp;&nbsp;&nbsp;
+                    Assigned to:{{data1.memberName}}&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button type="submit" (click)="delete(data.projectName,data1)" color="warn">Delete</button>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+#container{
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right, #8991be, #be8fae);
+    height: 100%;
+}
+mat-card{
+    padding: 1%;
+    margin: 0% 0% 2% 10%;
+    max-width: 800px;
+}
+button{
+    float: right;
+}

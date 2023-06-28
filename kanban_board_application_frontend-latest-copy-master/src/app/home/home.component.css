@@ -1,0 +1,18 @@
+#container{
+    display: flex;
+    /* background-color: #f3f7fa; */
+}
+.Title{
+    text-align: center;
+    margin: 10% 2% 0% 6%;
+}
+
+h1{
+    font-size: 40px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+button{
+    /* background-image: linear-gradient(to right, #857cb8, #422eb5); */
+    /* background-image: linear-gradient(to right, #87e5d4, #00b899); */
+    background-image: linear-gradient(to right, #ffc432, #f7884e);
+}

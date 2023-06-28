@@ -1,0 +1,45 @@
+
+#container{
+    /* background-image: url('/assets/team.jpg'); */
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right, #8991be, #be8fae);
+    height: 100%;
+    /* background-color: #00b899; */
+    /* margin: 2%; */
+}
+.card{
+    padding: 1%;
+    margin-right: 2%;
+    display: flex;
+    margin-bottom: 2%;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#table{
+    margin-left: 5%;
+    width: 90%;
+}
+
+.modal{
+    margin-top: 8%;
+}
+.modal-header{
+    background-color: #9c6f8d;
+    padding: 0%;
+}
+
+.modal-header .btn-close{
+    margin: 0;
+    padding: 4%;
+}
+
+.modal-title{
+    margin: 0;
+    margin-left: 2%;
+    color: black;
+}

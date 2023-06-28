@@ -1,0 +1,82 @@
+<div id="container">
+  <div style="display: flex;">
+    <h1 style="margin: 2%;">Add Member</h1>
+
+    <button mat-mini-fab color="primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-top: 2%; background-color: #333333;">
+      <mat-icon style="overflow: visible;">add</mat-icon>
+    </button>
+  </div>
+  <div>
+    <div id="table">
+      <table mat-table [dataSource]="memberData" class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="memberId">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.memberId}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="memberName">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.memberName}} </td>
+        </ng-container>
+      
+        <!-- Email Column -->
+        <ng-container matColumnDef="memberEmailId">
+          <th mat-header-cell *matHeaderCellDef> Email ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.memberEmailId}} </td>
+        </ng-container>
+      
+        <!-- No. Of Task Column -->
+        <ng-container matColumnDef="noOfTask">
+          <th mat-header-cell *matHeaderCellDef> Tasks assigned  </th>
+          <td mat-cell *matCellDef="let element"> {{element.noOfTask}} </td>
+        </ng-container>
+
+         <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef aria-label="row actions"> Action  </th>
+          <td mat-cell *matCellDef="let element" class="action-link"> 
+            <button mat-mini-fab color="warn" (click)="deleteMember(element.memberId)">
+            <mat-icon>delete</mat-icon>
+          </button> 
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Add New Member</h2>
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="memberForm" (ngSubmit)="addMember()" >
+            <div class="form-outline mb-3">
+              <input type="text"  formControlName="memberName"  id="memberName" placeholder="Member Name"/>
+            </div>
+            <div class="form-outline mb-3">
+                <input type="text"  formControlName="memberEmailId"  id="memberEmailId" placeholder="Member email"/>
+            </div>
+           
+            <div class="form-outline mb-3">
+              <button mat-raised-button color="primary" type="submit" style="margin-left: 36%;" data-bs-dismiss="modal"   [disabled]="memberForm.invalid">
+                  Add Member
+              </button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
